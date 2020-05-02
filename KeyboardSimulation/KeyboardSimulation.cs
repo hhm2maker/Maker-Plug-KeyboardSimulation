@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 
 namespace KeyboardSimulation
 {
-    public class KeyboardSimulation : IBasePlug
+    public class KeyboardSimulation : BasePlug
     {
-        public ImageSource GetIcon()
+        public override ImageSource GetIcon()
         {
             // 获取当前程序集
             Assembly assembly = Assembly.GetAssembly(GetType());
@@ -34,19 +34,32 @@ namespace KeyboardSimulation
             }
         }
 
-        public List<PermissionsClass.Permissions> GetPermissions()
+        public override List<PermissionsClass.Permissions> GetPermissions()
         {
             return new List<PermissionsClass.Permissions>() { PermissionsClass.Permissions.InputAndOutput };
         }
 
-        public System.Windows.Controls.UserControl GetView()
+        public override System.Windows.Controls.UserControl GetView()
         {
             return FileUtils.keyboardSimulationUserControl;
         }
 
-        public List<IControl> GetControl()
+        public override List<IControl> GetControl()
         {
             return FileUtils.iControls;
+        }
+
+
+        public override PlugInfo GetInfo()
+        {
+            PlugInfo plugInfo = new PlugInfo
+            {
+                Title = "模拟键盘",
+                Author = "hhm",
+                Version = "1.1.0",
+                Describe = "将Launchpad按键转换为键盘的按键。"+Environment.NewLine+ "DD模式其核心内容调用的是他人编写的程序(与游戏脚本类似)，请谨慎使用。使用后造成的封号等后果,本插件概不负责。",
+            };
+            return plugInfo;
         }
     }
 }

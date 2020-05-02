@@ -1,20 +1,10 @@
 ﻿using MakerUI.Device;
-using Operation;
-using PlugLib;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 
@@ -28,7 +18,6 @@ namespace KeyboardSimulation
         public KeyboardSimulationUserControl()
         {
             InitializeComponent();
-
             Loaded += UserControl_Loaded;
         }
 
@@ -37,6 +26,11 @@ namespace KeyboardSimulation
         LaunchpadPro launchpadPro;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            double x = SystemParameters.WorkArea.Width;//得到屏幕工作区域宽度
+            double y = SystemParameters.WorkArea.Height;//得到屏幕工作区域高度
+            vbMain.Width = x / 2;
+            vbMain.Height = vbMain.Width / 1338 * 860;
+
             if (isFirst)
             {
                 launchpadPro = new LaunchpadPro();
@@ -50,7 +44,6 @@ namespace KeyboardSimulation
                 InitKeyboard();
                 LoadKeyboards();
 
-                tbVersion.Text = FileUtils.version;
                 SelectPosition(11);
 
                 isFirst = false;

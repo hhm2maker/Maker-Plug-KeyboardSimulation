@@ -166,7 +166,5 @@ namespace KeyboardSimulation
 
         public static KeyboardSimulationUserControl keyboardSimulationUserControl = new KeyboardSimulationUserControl();
         public static List<IControl> iControls = new List<IControl>() { new KeyboardInputAndOutputControl()};
-
-        public static String version = "V1.0.0";
     }
 }
