@@ -107,7 +107,10 @@ namespace KeyboardSimulation
 
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tbPosition.Text = lbMain.SelectedItem.ToString().Split(' ')[0];
+            if (lbMain.SelectedIndex != -1)
+            {
+                tbPosition.Text = lbMain.SelectedItem.ToString().Split(' ')[0];
+            }
         }
 
         private List<Button> btns = new List<Button>();
